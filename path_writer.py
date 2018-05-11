@@ -12,5 +12,5 @@ path = np.array(path)
 print(path)
 
 with open(".../.csv", 'w') as myfile:
-    wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
-    wr.writerow(path)
+    for singlefile in path:
+        myfile.write(singlefile+'\n')
