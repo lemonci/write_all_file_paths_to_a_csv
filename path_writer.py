@@ -5,18 +5,26 @@ import csv
 def on_click():
     path = []
     
-    for root, dirs, files in os.walk(os.path.abspath(home)):
+    homedir = str(home.get()) # get content from home and convert it to string
+    
+    csvlocdir = str(csvloc.get()) # get content from home and convert it to string
+    
+    
+    for root, dirs, files in os.walk(os.path.abspath(homedir)):
         for file in files:
             path.append(os.path.join(root, file))
 
-    with open(csvloc, 'w') as myfile:
+    with open(csvlocdir, 'w') as myfile:
         for singlefile in path:
             myfile.write(singlefile+'\n')
 # path writer end
             
+  
 #GUI Start
 
 from tkinter import *
+
+
 root = Tk()
 root.title()
 
@@ -31,7 +39,7 @@ home_folder.set(" ")
 home.pack()
 
 #GUI Line 3 Prompt for csv location
-l2 = Label(root, text="csv location:")
+l2 = Label(root, text="csv filename with full path:")
 l2.pack()
 
 #GUI Line 4 Receiving csv location as a string
@@ -46,4 +54,3 @@ Button(root, text="OK", command = on_click).pack()
 root.mainloop()
 
 #GUI End
-
