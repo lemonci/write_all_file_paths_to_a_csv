@@ -1,22 +1,19 @@
 import os
 import csv
-import numpy as np
 
-
+# write file path into a csv file
 def on_click():
     path = []
-
+    
     for root, dirs, files in os.walk(os.path.abspath(home)):
         for file in files:
             path.append(os.path.join(root, file))
 
-    path = np.array(path)
-    print(path)
-
     with open(csvloc, 'w') as myfile:
         for singlefile in path:
             myfile.write(singlefile+'\n')
-
+# path writer end
+            
 #GUI Start
 
 from tkinter import *
