@@ -18,9 +18,11 @@ def on_click():
     with open(csvlocdir, 'w') as myfile:
         for singlefile in path:
             myfile.write(singlefile+'\n')
-            
-    p = Popen('filename.csv', shell=True)
-    subprocess.Popen(csvlocdir,'r')
+
+    from win32com.client import Dispatch
+    xl = Dispatch('Excel.Application')
+    wb = xl.Workbooks.Open(csvlocdir)
+    xl.Visible = True
 # path writer end
 
   
